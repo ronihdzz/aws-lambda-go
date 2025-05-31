@@ -1,0 +1,17 @@
+services:
+  app-lambda:
+    build:
+      context: .
+      dockerfile: docker_images/deploy/Dockerfile.deploy
+    environment:
+      - TYPE_HANDLER=LAMBDA
+    ports:
+      - "9000:8080"
+  app-api:
+    build:
+      context: .
+      dockerfile: docker_images/local/Dockerfile.local
+    environment:
+      - TYPE_HANDLER=API
+    ports:
+      - "9000:8080"
